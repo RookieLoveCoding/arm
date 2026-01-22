@@ -99,7 +99,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
     /* Blink LED: toggle LED_R and wait 500 ms */
     HAL_GPIO_TogglePin(LED_R_GPIO_Port, LED_R_Pin);
-    HAL_Delay(1000);
+    HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }

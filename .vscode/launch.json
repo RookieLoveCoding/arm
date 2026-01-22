@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/build/stm32_1.elf",  // ELF文件
+            "request": "launch",
+            "type": "cortex-debug",  // 使用Cortex-Debug扩展
+            "servertype": "openocd",
+            "device": "STM32F407ZG",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",  // CMSIS-DAP接口
+                "target/stm32f4x.cfg"       // STM32F4目标配置
+            ],
+            "svdFile": "${workspaceFolder}/drivers/CMSIS/SVD/STM32F407.svd",  // 可选的SVD文件
+            "runToEntryPoint": "main",  // 运行到main函数
+            "armToolchainPath": "/usr/bin",  // ARM工具链路径
+            "gdbPath": "/usr/bin/gdb-multiarch",  // GDB路径
+            "showDevDebugOutput": "raw",
+            "serverpath": "/usr/bin/openocd",  // OpenOCD路径
+            "searchDir": [],  // OpenOCD搜索路径
+            "interface": "swd",
+            // "preLaunchTask": "build",  // 调试前执行构建任务
+            "overrideLaunchCommands": [
+                "monitor reset halt",  // 复位芯片
+                "monitor program ${workspaceFolder}/build/stm32_1.elf verify",  // 烧录并验证
+                "monitor reset halt",  // 再次复位
+                "break main",  // 在main函数设置断点
+                "monitor resume"  // 继续执行
+            ],
+        }
+    ]
+}

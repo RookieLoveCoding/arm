@@ -45,10 +45,6 @@ set(STM32_Drivers_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c
 )
 
-# Drivers Midllewares
-
-
-
 # Link directories setup
 set(MX_LINK_DIRS
 
@@ -57,7 +53,6 @@ set(MX_LINK_DIRS
 set(MX_LINK_LIBS 
     STM32_Drivers
     ${TOOLCHAIN_LINK_LIBRARIES}
-    
 )
 # Interface library for includes and symbols
 add_library(stm32cubemx INTERFACE)
